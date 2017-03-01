@@ -1,5 +1,5 @@
 #!/usr/bin/groovy
-@Library('github.com/vpavlin/fabric8-pipeline-library@master')
+@Library('github.com/vpavlin/fabric8-pipeline-library@resource/400')
 
 def versionPrefix = ""
 try {
