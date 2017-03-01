@@ -36,14 +36,6 @@ clientsTemplate{
       kubernetesApply(environment: envStage)
       sh "oc tag ${currentNamespace}/${artifactId}:${canaryVersion} ${envStage}/${artifactId}:${canaryVersion}"
 
-      stage 'Approve'
-      approve {
-        room = null
-        version = canaryVersion
-        console = fabric8Console
-        environment = 'Staging'
-      }
-
       stage 'Rollout Production'
       kubernetesApply(environment: envProd)
       sh "oc tag ${currentNamespace}/${artifactId}:${canaryVersion} ${envProd}/${artifactId}:${canaryVersion}"
